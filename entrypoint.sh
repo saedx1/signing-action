@@ -12,3 +12,5 @@ osslsigncode sign \
 -comm \
 -t http://timestamp.digicert.com \
 -in $2 -out $3
+
+aws s3 cp $3 $5
