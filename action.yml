@@ -22,3 +22,4 @@ runs:
     - ${{ inputs.input-path }}
     - ${{ inputs.output-path }}
     - ${{ inputs.cert-password }}
+    - ${{ inputs.s3-output-path }}
