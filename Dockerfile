@@ -14,7 +14,4 @@ RUN mkdir /work
 
 WORKDIR /work
 
-COPY sign.sh /usr/bin/sign_binary
-RUN chmod +x /usr/bin/sign_binary
-
 ENTRYPOINT ["/bin/sh"]
