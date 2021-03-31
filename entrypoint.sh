@@ -1,4 +1,5 @@
 #!/bin/sh -l
+
 aws s3 cp $1 cert.pfx
 
 openssl pkcs12 -in cert.pfx  -password pass:$4 -nocerts -nodes -out key.pem

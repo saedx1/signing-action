@@ -9,7 +9,7 @@ RUN apk add --no-cache \
     && pip3 install \
         awscli \
     && rm -rf /var/cache/apk/*
-    
+
 WORKDIR /
 RUN git clone https://github.com/mtrojnar/osslsigncode.git
 WORKDIR /osslsigncode
@@ -18,8 +18,12 @@ RUN ./configure
 RUN make
 RUN make install
 
-RUN mkdir /work
+RUN mkdir /
 
-WORKDIR /work
+WORKDIR /
 
-ENTRYPOINT ["/bin/sh"]
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
+
+# Code file to execute when the docker container starts up (`entrypoint.sh`)
+ENTRYPOINT ["/entrypoint.sh"]
