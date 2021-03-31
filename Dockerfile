@@ -18,12 +18,14 @@ RUN ./configure
 RUN make
 RUN make install
 
-RUN mkdir /
+RUN mkdir /work
 
-WORKDIR /
+WORKDIR /work
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /work/entrypoint.sh
+
+RUN ["chmod", "+x", "/work/entrypoint.sh"]
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/work/entrypoint.sh"]
