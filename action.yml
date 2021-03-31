@@ -1,0 +1,24 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  pfx-file:
+    description: 'certificate pfx file'
+    required: true
+  input-path:
+    description: 'path for input binary to be signed'
+    required: true
+  output-path:
+    description: 'path to output the signed binary'
+    required: true
+  cert-password:
+    description: 'password for the certificate'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.pfx-file }}
+    - ${{ inputs.input-path }}
+    - ${{ inputs.output-path }}
+    - ${{ inputs.cert-password }}
